@@ -12,7 +12,7 @@ function getMiddleware() {
 	var middlewares = [];
 	config.proxies.forEach(function(route) {
         // configure proxy middleware 
-		var context = route.from                     // requests with this path will be proxied 
+		var context = route.from;                     // requests with this path will be proxied 
 		var options = {
 		        target: route.to,
 		        headers: ''

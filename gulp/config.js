@@ -6,7 +6,7 @@ var appModuleName = require('./../package').name;
 module.exports = function() {
     var appPath = 'webapp';
     var tmp = '.tmp';
-    var dist = 'dist';
+    var dist = 'V:';
     var assets = appPath + '/assets';
     var bowerDir = './bower_components';
     var serveDir = tmp;
@@ -96,7 +96,7 @@ module.exports = function() {
 
         proxies: [{
             from: '/api',
-            to: 'http://example.com' // Just an example backend proxy
+            to: 'http://z09ar1sas006.ad.previa.net:9000' // Just an example backend proxy
         }],
 
         wiredepOptions: {

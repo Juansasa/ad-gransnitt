@@ -4,18 +4,16 @@
         .controller('HomeController', homeCtrl);
 
     /*@ngInject*/
-    function homeCtrl($scope, adService) {
+    function homeCtrl($scope, activeDirectory) {
         $scope.getPersons = getPersons;
 
 
         function getPersons(queryString) {
-            return adService.getPersons(queryString).then(success, error);
+            return activeDirectory.getPersons(queryString).then(success, error);
         }
 
         function success(response) {
-            return response.data.map(function(item) {
-                return item;
-            });
+            return response.data;
         }
 
         function error(err) {
