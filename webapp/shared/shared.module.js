@@ -7,14 +7,14 @@
      */
     angular.module('shared', [
         'gettext',
-        //'ngAnimate',
+        'ngAnimate',
         'ngCookies',
         'ngSanitize',
         'ngResource',
         'ui.bootstrap',
-        'angularSpinner',
         'formly',
         'formlyBootstrap',
+        'wu.masonry',
 
         'exception',
         'router',

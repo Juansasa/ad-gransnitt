@@ -1,5 +1,4 @@
-.person-details {
-	@extend .col-md-3;
-	height: 100px;
+.details {
+	@extend .col-md-4;
 	background-color: red;
 }

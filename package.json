@@ -42,6 +42,7 @@
     "karma-osx-reporter": "^0.2.0",
     "karma-phantomjs-launcher": "^0.2.1",
     "main-bower-files": "^2.9.0",
+    "node-bourbon": "^4.2.3",
     "phantomjs": "^1.9.18",
     "require-dir": "^0.3.0",
     "uglify-save-license": "^0.4.1",
