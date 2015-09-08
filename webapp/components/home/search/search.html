@@ -1,13 +1,16 @@
 <div class="row">
 	<div class="personSearch">
-		<label>Personalsökning</label>
-		<input type="text" 
-			ng-model="personSearch" 
-			placeholder="fyll i namn" 
-			typeahead="person as person.name.firstname + ' ' + person.name.lastname for person in getPersons($viewValue)" 
-			typeahead-loading="loadingLocations" 
-			typeahead-wait-ms="200"
-			typeahead-no-results="noResults" 
-			class="form-control">
+			<label class="control-label">Personalsökning</label>
+				<input type="text"
+				id="search"
+				ng-model="selectedPerson"
+				placeholder="fyll i namn"
+				typeahead="person as person.name.firstname + ' ' + person.name.lastname for person in getPersons($viewValue)"
+				typeahead-loading="isLoading"
+				typeahead-wait-ms="200"
+				typeahead-on-select="addPerson($item)" 
+				typeahead-no-results="noResults"
+				class="form-control">
+			<i class="fa fa-spinner fa-pulse form-control-feedback" ng-show="isLoading"></i>
 	</div>
 </div>

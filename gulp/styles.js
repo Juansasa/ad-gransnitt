@@ -14,7 +14,7 @@ var plugins = require('gulp-load-plugins')();
 //
 
 var sassCompilerOptions = {
-    //includePaths: require('node-bourbon').includePaths, // For bourbon-libsass support
+    includePaths: require('node-bourbon').includePaths, // For bourbon-libsass support
     style: 'expanded'
 };
 

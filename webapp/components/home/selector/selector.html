@@ -1,3 +1,5 @@
 <div class="row">
-	<h1 class="text-center">This is the selector tabs view</h1>
+	<div class="selector-item" ng-repeat="person in personList">
+		<span ng-click="removePerson(person)" class="btn btn-danger"><i class=" fa fa-close"></i></span>
+	</div>
 </div>

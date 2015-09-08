@@ -1,6 +1,15 @@
+.has-feedback-right {
+	.form-control-feedback {
+		right: 1em;
+	}
+}
+
 .personSearch {
 	@extend .col-md-4;
 	@extend .col-md-offset-4;
+	@extend .form-group;
+	@extend .has-feedback;
+	@extend .has-feedback-right;
 
 	margin-top: 5em;
 }
