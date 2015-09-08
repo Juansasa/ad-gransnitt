@@ -4,20 +4,15 @@
         .controller('HomeController', homeCtrl);
 
     /*@ngInject*/
-    function homeCtrl($scope, activeDirectory) {
-        $scope.getPersons = getPersons;
+    function homeCtrl($scope) {
+    	$scope.personList = [];
+        $scope.addPerson = addPerson;
 
 
-        function getPersons(queryString) {
-            return activeDirectory.getPersons(queryString).then(success, error);
-        }
-
-        function success(response) {
-            return response.data;
-        }
-
-        function error(err) {
-            return err.message;
+        function addPerson(person) {
+			if(person) {
+				$scope.personList.push(person);
+			}
         }
     }
 })();
