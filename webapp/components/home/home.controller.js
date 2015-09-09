@@ -5,7 +5,7 @@
 
     /*@ngInject*/
     function homeCtrl($scope) {
-    	$scope.personList = [{
+        $scope.personList = [{
             username: 'zquavu',
             name: {
                 firstname: 'Quang',
@@ -31,11 +31,19 @@
 
 
         function addPerson(person) {
-			if(person) {
+            if (person) {
+                var index = _.findIndex($scope.personList, function(p) {
+                    return person.username === p.username;
+                });
+
+                if(index !== -1) {
+                    return;
+                }
+
                 person.isSelected = true;
                 person.color = getRandomColor();
-				$scope.personList.push(person);
-			}
+                $scope.personList.push(person);
+            }
         }
 
         function removePerson(person) {
@@ -44,15 +52,15 @@
             });
         }
 
-        function toogleSelect (person) {
+        function toogleSelect(person) {
             person.isSelected = !person.isSelected;
         }
 
-        function getRandomColor () {
+        function getRandomColor() {
             return $scope.colors[$scope.personList.length];
         }
 
-        function getSelectedColor (person) {
+        function getSelectedColor(person) {
             return person.isSelected ? person.color : 'bg-active';
         }
     }
