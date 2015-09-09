@@ -4,6 +4,7 @@
 
 	table {
 		@extend .table;
+		table-layout: fixed;
 		thead {
 			tr {
 				th {
