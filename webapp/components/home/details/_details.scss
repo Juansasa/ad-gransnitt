@@ -1,4 +1,32 @@
 .details {
-	@extend .col-md-4;
-	background-color: red;
+	$border-radius: 10px;
+	@extend .container-fluid;
+
+	table {
+		@extend .table;
+		thead {
+			tr {
+				th {
+					border: solid thin #ddd;
+					&:first-child {
+						border-top-left-radius: $border-radius;
+						border: none;
+					}
+
+					&:last-child {
+						border-top-right-radius: $border-radius;
+						border: none;
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				td {
+					border: solid thin #ddd;
+				}
+			}
+		}
+	}
 }

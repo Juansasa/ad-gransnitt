@@ -1,11 +1,12 @@
 .selector-item {
 	$color: lighten(grey, 20%);
-	$badgeSize: 30px;
+	$selectorSize: 70px;
+	$badgeSize: $selectorSize/2;
 	
 	position: relative;
 	display: inline-block;
-	width: 100px;
-	height: 100px;
+	width: $selectorSize;
+	height: $selectorSize;
 	border: solid 3px $color;
 	border-radius: 5px;
 	color: $color;

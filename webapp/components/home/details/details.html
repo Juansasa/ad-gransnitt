@@ -1,10 +1,22 @@
-<div class="container-fluid">
-    <masonry load-images="false" masonry-options={percentPosition: true}>
-        <div class="masonry-brick">
-            <div class="details">hahah</div>
-        </div>
-        <div class="masonry-brick">
-            <div class="details">hahaha</div>
-        </div>
-    </masonry>
+<div class="details">
+    <table>
+        <thead>
+            <tr>
+                <th ng-if="person.isSelected" 
+                	class="text-center"
+                	ng-style="{'background-color': getSelectedColor(person), 'color': 'white'}" 
+                	ng-repeat="person in personList">
+                	{{person.name.firstname + ' ' + person.name.lastname}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ng-if="person.isSelected" 
+                	ng-repeat="person in personList">
+                	{{person.username}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

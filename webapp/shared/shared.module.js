@@ -14,7 +14,6 @@
         'ui.bootstrap',
         'formly',
         'formlyBootstrap',
-        'wu.masonry',
 
         'exception',
         'router',
