@@ -14,7 +14,7 @@
             <tr>
                 <td ng-if="person.isSelected" 
                 	ng-repeat="person in personList">
-                	{{person.username}}
+                    <pre>{{person | json}}</pre>
                 </td>
             </tr>
         </tbody>

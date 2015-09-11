@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var config = require('./config')();
-var $ = require('gulp-load-plugins')();
+var plugins = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 
 //
@@ -18,7 +18,7 @@ gulp.task('inject', ['styles'], function() {
     }
 
     function injectScripts() {
-        return gulp.src(config.js.files).pipe($.angularFilesort());
+        return gulp.src(config.js.files).pipe(plugins.angularFilesort());
     }
 
     var injectOptions = {
@@ -27,8 +27,8 @@ gulp.task('inject', ['styles'], function() {
     };
 
     return gulp.src([config.webapp + '/*.html'])
-        .pipe($.inject(injectStyles(), injectOptions))
-        .pipe($.inject(injectScripts(), injectOptions))
+        .pipe(plugins.inject(injectStyles(), injectOptions))
+        .pipe(plugins.inject(injectScripts(), injectOptions))
         .pipe(wiredep(config.wiredepOptions))
         .pipe(gulp.dest(config.serve));
 });

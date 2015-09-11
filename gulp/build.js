@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var config = require('./config')();
 var gulpSequence = require('gulp-sequence');
+var del = require('del');
 var plugins = require('gulp-load-plugins')({
     pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
@@ -89,8 +90,8 @@ gulp.task('misc', function() {
         .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('clean', function() {
-    return plugins.del([config.dist, config.tmp]);
+gulp.task('clean', function(done) {
+    return del([config.dist + '/**', config.tmp + '/**'], {force: true}, done);
 });
 
 gulp.task('build', gulpSequence('clean', ['images', 'misc', 'fonts'], 'html'));

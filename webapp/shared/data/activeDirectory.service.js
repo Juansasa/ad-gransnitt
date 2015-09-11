@@ -12,7 +12,7 @@
         return service;
 
         function getPersons(queryString) {
-            return $http.get('api/ad/search/' + queryString);
+            return $http.get('/api/ad/search/' + queryString);
         }
     }
 
