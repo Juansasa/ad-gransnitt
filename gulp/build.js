@@ -78,10 +78,15 @@ gulp.task('images', function() {
         .pipe(gulp.dest(config.images.dest));
 });
 
-gulp.task('fonts', function() {
+gulp.task('fonts-dev', function() {
     return gulp.src(config.fonts.files)
-        .pipe(plugins.filter('**/*.{eot,svg,ttf,woff}'))
+        .pipe(plugins.filter('**/*.{eot,svg,ttf,woff,woff2}'))
         .pipe(plugins.flatten())
+        .pipe(gulp.dest(config.fonts.dev));
+});
+
+gulp.task('fonts-prod',['fonts-dev'], function() {
+    return gulp.src([config.fonts.dev + '/**'])
         .pipe(gulp.dest(config.fonts.dest));
 });
 
@@ -94,4 +99,4 @@ gulp.task('clean', function(done) {
     return del([config.dist + '/**', config.tmp + '/**'], {force: true}, done);
 });
 
-gulp.task('build', gulpSequence('clean', ['images', 'misc', 'fonts'], 'html'));
+gulp.task('build', gulpSequence('clean', ['images', 'misc', 'fonts-prod'], 'html'));
