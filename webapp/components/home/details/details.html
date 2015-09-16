@@ -2,19 +2,38 @@
     <table>
         <thead>
             <tr>
-                <th ng-if="person.isSelected" 
-                	class="text-center"
-                	ng-style="{'background-color': getSelectedColor(person), 'color': 'white'}" 
-                	ng-repeat="person in personList">
-                	{{person.name.firstname + ' ' + person.name.lastname}}
+                <th ng-if="person.isSelected" class="text-center" ng-style="{'background-color': getSelectedColor(person), 'color': 'white'}" ng-repeat="person in personList">
+                    {{person.name.firstname + ' ' + person.name.lastname}}
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td ng-if="person.isSelected" 
-                	ng-repeat="person in personList">
-                    <pre>{{person | json}}</pre>
+                <td ng-if="person.isSelected" ng-repeat="person in personList">
+                    <accordion close-others="oneAtATime">
+                        <accordion-group is-open="generalInfo">
+                            <accordion-heading>
+                                Allmän Kontorsinformation <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': generalInfo, 'fa fa-chevron-circle-right': !generalInfo}"></i>
+                            </accordion-heading>
+                            <p><strong>Användarnamn: </strong>{{person.username}}</p>
+                        </accordion-group>
+
+                        <accordion-group is-open="distributionLists">
+                            <accordion-heading>
+                                Distributionslistor <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': distributionLists, 'fa fa-chevron-circle-right': !distributionLists}"></i>
+                            </accordion-heading>
+                            <p><strong>Användarnamn: </strong>{{person.username}}</p>
+                        </accordion-group>
+
+                        <accordion-group is-open="securityGroup">
+                            <accordion-heading>
+                                Säkerhetsgrupper <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': securityGroup, 'fa fa-chevron-circle-right': !securityGroup}"></i>
+                            </accordion-heading>
+                            <p><strong>Användarnamn: </strong>{{person.username}}</p>
+                        </accordion-group>
+                        <hr>
+                        <pre>{{person | json}}</pre>
+                    </accordion>
                 </td>
             </tr>
         </tbody>

@@ -5,7 +5,23 @@
 
     /*@ngInject*/
     function homeCtrl($scope, activeDirectory) {
-        $scope.personList = [];
+        $scope.personList = [{
+            username: 'zquavu',
+            name: {
+                firstname: 'Quang',
+                lastname: 'Vu'
+            },
+            isSelected: true,
+            color: '#1abc9c'
+        }, {
+            username: 'zviczel',
+            name: {
+                firstname: 'Viktor',
+                lastname: 'Zellin'
+            },
+            isSelected: true,
+            color: '#3498db'
+        }];
 
         $scope.colors = ['#1abc9c', '#37d078', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c', '#95a5a6', 'black'];
         $scope.addPerson = addPerson;
