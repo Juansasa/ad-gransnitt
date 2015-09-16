@@ -40,8 +40,8 @@
                                 <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': distributionLists, 'fa fa-chevron-circle-right': !distributionLists}"></i>
                             </accordion-heading>
                             <table class="table table-hover group-table">
-                                <tr ng-repeat="group in person.groups" ng-click="setSelectedGroup(group)">
-                                    <td ng-class="getGroupColor(group)">{{group}} {{selectedValue}}</td>
+                                <tr ng-repeat="group in person.groups" ng-click="setSelectedGroup(group)" ng-mouseover="setHoveredGroup(group)">
+                                    <td ng-class="getGroupColorHover(group) || getGroupColorSelected(group)">{{group}} {{selectedValue}}</td>
                                 </tr>
                             </table>
                         </accordion-group>

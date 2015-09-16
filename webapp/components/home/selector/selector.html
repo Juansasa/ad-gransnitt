@@ -10,7 +10,7 @@
 		</span>
 
 		<span ng-show="person.thumbnailPhoto" ng-style="{'color': getSelectedColor(person)}">
-			<img ng-style="{'border-color': getSelectedColor(person)}" src="data:image/gif;base64,{{person.thumbnailPhoto}}">
+			<img ng-style="{'border-color': getSelectedColor(person)}" ng-src="data:image/gif;base64,{{person.thumbnailPhoto}}">
 		</span>
 
 		<p><strong>{{person.name.firstname + ' ' + person.name.lastname}}</strong></p>
