@@ -24,12 +24,15 @@
                     return;
                 }
 
+                $scope.isFetchingUser = true;
                 activeDirectory.getAccountInfo(person.username).then(function(respons) {
                     var userInfo = respons.data[0];
                     userInfo.isSelected = true;
                     userInfo.color = getRandomColor();
                     $scope.personList.push(userInfo);
+                    $scope.isFetchingUser = false;
                 }, function(error) {
+                    $scope.isFetchingUser = false;
                     throw error;
                 });
 
@@ -57,7 +60,6 @@
             });
 
             var retval = $scope.colors[(lastColorIndex + 1) % ($scope.colors.length - 1)];
-            console.log(retval, lastColorIndex + 1 % $scope.colors.length);
 
             return retval;
         }

@@ -9,11 +9,17 @@
 		  <i class="fa fa-user fa-stack-1x"></i>
 		</span>
 
-		<span ng-if="person.thumbnailPhoto">
-			<img src="data:image/gif;base64,{{person.thumbnailPhoto}}">
+		<span ng-show="person.thumbnailPhoto" ng-style="{'color': getSelectedColor(person)}">
+			<img ng-style="{'border-color': getSelectedColor(person)}" src="data:image/gif;base64,{{person.thumbnailPhoto}}">
 		</span>
 
 		<p><strong>{{person.name.firstname + ' ' + person.name.lastname}}</strong></p>
 		<a ng-click="removePerson(person)"><i class="fa fa-times-circle-o fa-3x"></i></a>
+	</div>
+	
+	<div class="selector-item" ng-if="isFetchingUser">
+		<span class="fa-stack fa-3x">
+			<i class="fa fa-spinner fa-pulse fa-stack-1x"></i>
+		</span>
 	</div>
 </div>

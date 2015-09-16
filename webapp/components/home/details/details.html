@@ -11,9 +11,10 @@
             <tr>
                 <td ng-if="person.isSelected" ng-repeat="person in personList">
                     <accordion close-others="oneAtATime">
-                        <accordion-group is-open="true">
+                        <accordion-group is-open="generalInfo" ng-init="generalInfo = true">
                             <accordion-heading>
-                                Allmän Kontorsinformation <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': generalInfo, 'fa fa-chevron-circle-right': !generalInfo}"></i>
+                                <strong>Allmän Kontorsinformation</strong> 
+                                <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': generalInfo, 'fa fa-chevron-circle-right': !generalInfo}"></i>
                             </accordion-heading>
                             <p><strong>Användarnamn: </strong>{{person.username}}</p>
                             <p><strong>Konto utgår den: </strong>{{person.accountExpires ? getDate(person.accountExpires) : '( Aldrig )'}}</p>
@@ -33,21 +34,17 @@
                             <p><strong>Konto är låst sedan: </strong>{{getDate(person.lockoutTime)}}</p>
                         </accordion-group>
 
-                        <accordion-group is-open="distributionLists">
+                        <accordion-group is-open="distributionLists" ng-init="distributionLists = true">
                             <accordion-heading>
-                                Distributionslistor <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': distributionLists, 'fa fa-chevron-circle-right': !distributionLists}"></i>
+                                <strong>Distributionslistor</strong> 
+                                <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': distributionLists, 'fa fa-chevron-circle-right': !distributionLists}"></i>
                             </accordion-heading>
-                            <p><strong>Användarnamn: </strong>{{person.username}}</p>
+                            <table class="table table-hover group-table">
+                                <tr ng-repeat="group in person.groups" ng-click="setSelectedGroup(group)">
+                                    <td ng-class="getGroupColor(group)">{{group}} {{selectedValue}}</td>
+                                </tr>
+                            </table>
                         </accordion-group>
-
-                        <accordion-group is-open="securityGroup">
-                            <accordion-heading>
-                                Säkerhetsgrupper <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': securityGroup, 'fa fa-chevron-circle-right': !securityGroup}"></i>
-                            </accordion-heading>
-                            <p><strong>Användarnamn: </strong>{{person.username}}</p>
-                        </accordion-group>
-                        <hr>
-                        <pre>{{person | json}}</pre>
                     </accordion>
                 </td>
             </tr>

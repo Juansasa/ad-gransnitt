@@ -30,4 +30,23 @@
 			}
 		}
 	}
+
+	.group-table {
+		tbody {
+			tr {
+				td {
+					border-left: none;
+					border-right: none;
+
+					&:first-child {
+						border-top: none;
+					}
+				}
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
 }
