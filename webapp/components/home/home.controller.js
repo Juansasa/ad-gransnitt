@@ -4,24 +4,8 @@
         .controller('HomeController', homeCtrl);
 
     /*@ngInject*/
-    function homeCtrl($scope) {
-        $scope.personList = [{
-            username: 'zquavu',
-            name: {
-                firstname: 'Quang',
-                lastname: 'Vu'
-            },
-            isSelected: true,
-            color: '#1abc9c'
-        }, {
-            username: 'zviczel',
-            name: {
-                firstname: 'Viktor',
-                lastname: 'Zellin'
-            },
-            isSelected: true,
-            color: '#3498db'
-        }];
+    function homeCtrl($scope, activeDirectory) {
+        $scope.personList = [];
 
         $scope.colors = ['#1abc9c', '#37d078', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c', '#95a5a6', 'black'];
         $scope.addPerson = addPerson;
@@ -36,13 +20,19 @@
                     return person.username === p.username;
                 });
 
-                if(index !== -1) {
+                if (index !== -1) {
                     return;
                 }
 
-                person.isSelected = true;
-                person.color = getRandomColor();
-                $scope.personList.push(person);
+                activeDirectory.getAccountInfo(person.username).then(function(respons) {
+                    var userInfo = respons.data[0];
+                    userInfo.isSelected = true;
+                    userInfo.color = getRandomColor();
+                    $scope.personList.push(userInfo);
+                }, function(error) {
+                    throw error;
+                });
+
             }
         }
 
@@ -57,7 +47,19 @@
         }
 
         function getRandomColor() {
-            return $scope.colors[$scope.personList.length];
+            if($scope.personList.length === 0) {
+                return $scope.colors[0];
+            }
+
+            var lastColor = _.last($scope.personList).color;
+            var lastColorIndex = _.findIndex($scope.colors, function(val) {
+                return lastColor === val;
+            });
+
+            var retval = $scope.colors[(lastColorIndex + 1) % ($scope.colors.length - 1)];
+            console.log(retval, lastColorIndex + 1 % $scope.colors.length);
+
+            return retval;
         }
 
         function getSelectedColor(person) {
