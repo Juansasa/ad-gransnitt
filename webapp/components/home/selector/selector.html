@@ -4,9 +4,13 @@
 		ng-repeat="person in personList"
 		ng-click="toogleSelect(person)">
 
-		<span class="fa-stack fa-3x">
+		<span ng-hide="person.thumbnailPhoto" class="fa-stack fa-3x">
 		  <i class="fa fa-square-o fa-stack-2x"></i>
 		  <i class="fa fa-user fa-stack-1x"></i>
+		</span>
+
+		<span ng-if="person.thumbnailPhoto">
+			<img src="data:image/gif;base64,{{person.thumbnailPhoto}}">
 		</span>
 
 		<p><strong>{{person.name.firstname + ' ' + person.name.lastname}}</strong></p>
