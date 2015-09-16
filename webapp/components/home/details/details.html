@@ -11,11 +11,26 @@
             <tr>
                 <td ng-if="person.isSelected" ng-repeat="person in personList">
                     <accordion close-others="oneAtATime">
-                        <accordion-group is-open="generalInfo">
+                        <accordion-group is-open="true">
                             <accordion-heading>
                                 Allmän Kontorsinformation <i class="pull-right fa" ng-class="{'fa fa-chevron-circle-down': generalInfo, 'fa fa-chevron-circle-right': !generalInfo}"></i>
                             </accordion-heading>
                             <p><strong>Användarnamn: </strong>{{person.username}}</p>
+                            <p><strong>Konto utgår den: </strong>{{person.accountExpires ? getDate(person.accountExpires) : '( Aldrig )'}}</p>
+                            <p><strong>Konto skapades den: </strong>{{getDate(person.whenCreated)}}</p>
+                            <p><strong>Senast kontoändring: </strong>{{getDate(person.whenChanged)}}</p>
+                            <hr>
+                            <p><strong>Förvalt hemmapp: </strong>{{person.homeDirectory}}</p>
+                            <p><strong>Förvalt standard hårddisk: </strong>{{person.homeDrive}}</p>
+                            <hr>
+                            <p><strong>Senast inloggning: </strong>{{getDate(person.lastLogon)}}</p>
+                            <p><strong>Antal inloggningar: </strong>{{person.logonCount}}</p>
+                            <p><strong>Senast utloggning: </strong>{{getDate(person.lastLogoff)}}</p>
+                            <p><strong>Senast inloggning med fel lösenord: </strong>{{getDate(person.badPasswordTime)}}</p>
+                            <p><strong>Antal inloggningar med fel lösenord: </strong>{{person.badPwdCount}}</p>
+                            <hr>
+                            <p><strong>Senast lösenordsändring: </strong>{{getDate(person.pwdLastSet)}}</p>
+                            <p><strong>Konto är låst sedan: </strong>{{getDate(person.lockoutTime)}}</p>
                         </accordion-group>
 
                         <accordion-group is-open="distributionLists">

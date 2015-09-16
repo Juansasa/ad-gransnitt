@@ -1,9 +1,12 @@
 .selector-item {
 	$color: lighten(grey, 20%);
+	$size: 8em;
 	
 	position: relative;
 	display: inline-block;
-	margin: 0 1em;
+	width: $size;
+	height: $size;
+	vertical-align: top;
 
 	p {
 		overflow: hidden;
@@ -22,11 +25,11 @@
 	a {
 		display: none;
 		position: absolute;
-		top: -0.5em;
-		right: -0.5em;
+		top: -1.3em;
+		right: -0.3em;
 		text-decoration: none;
 		color: darken(red, 10%);
-		background-color: white;
+		background-color: transparent;
 
 		&:hover {
 			color: red;
@@ -40,7 +43,10 @@
 
 	span {
 		img {
-			
+			width: $size - 3em;
+			margin: 0.5em;
+			height: auto;
+			border-radius: 1em;
 		}
 	}
 }
